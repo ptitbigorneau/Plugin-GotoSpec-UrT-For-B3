@@ -1,0 +1,8 @@
+<configuration plugin="gotospec">
+    <settings name="settings">
+
+        <set name="adminlevel">40</set>
+
+        </settings>
+</configuration>
+
