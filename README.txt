@@ -4,9 +4,7 @@
 
 # www.ptitbigorneau.fr
 
-
-
-gotospec plugin B3 (v1.0.0) for Urban Terror
+gotospec plugin (v1.1.0) for B3
 
 
 
@@ -19,12 +17,12 @@ Installation
  * copy gotospec.py into b3/extplugins
 
 
- * copy gotospec.xml into b3/extplugins/conf
+ * copy gotospec.ini into b3/extplugins/conf
 
  
  * create the gotospec table in your database importing the gotospec.sql file.
 
 
  * update your main b3 config file with :
-   <plugin name="gotospec" config="@b3/extplugins/conf/gotospec.xml"/>
+   <plugin name="gotospec" config="@b3/extplugins/conf/gotospec.ini"/>
 

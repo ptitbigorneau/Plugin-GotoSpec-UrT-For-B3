@@ -1,7 +1,7 @@
 # gotospec Plugin
 
 __author__  = 'PtitBigorneau www.ptitbigorneau.fr'
-__version__ = '1.0'
+__version__ = '1.1'
 
 import b3
 import b3.plugin
@@ -26,6 +26,9 @@ class GotospecPlugin(b3.plugin.Plugin):
     _cronTab = None
     _adminPlugin = None
 
+    _adminlevel = 40
+    _permadminlevel = 60
+    _maxduree = 60
 
     def onStartup(self):
 
@@ -50,7 +53,11 @@ class GotospecPlugin(b3.plugin.Plugin):
     
     def onLoadConfig(self):
 
-        self._adminlevel = self.config.get('settings', 'adminlevel')
+        try:
+            self._adminlevel = self.config.getint('settings', 'adminlevel')
+        except Exception, err:
+            self.warning("Using default value for adminlevel. %s" % (err))
+        self.debug('adminlevel : %s' % (self._adminlevel))
 
     def onEvent(self, event):
 
@@ -326,7 +333,6 @@ class GotospecPlugin(b3.plugin.Plugin):
 
             else:
 
-
                 cursor.close()
             
                 cursor = self.console.storage.query("""
@@ -335,5 +341,3 @@ class GotospecPlugin(b3.plugin.Plugin):
                 """ % (sclient.id, craison, cadmin, 'yes', cdatedebut, cdatefin))
                 cursor.close()
                 return False
-         
-        
